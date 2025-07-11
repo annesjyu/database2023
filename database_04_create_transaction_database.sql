@@ -1,4 +1,6 @@
-CREATE or REPLACE DATABASE transactions;
+DROP DATABASE IF EXISTS transactions;
+
+CREATE DATABASE transactions;
 
 USE transactions;
 
