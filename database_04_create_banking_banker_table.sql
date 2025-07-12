@@ -1,5 +1,7 @@
 USE transactions;
 
+DROP TABLE IF EXISTS banking_banker;
+
 CREATE OR REPLACE TABLE banking_banker (
     employment_id VARCHAR(20) NOT NULL PRIMARY KEY,
     employee_name VARCHAR(100) NOT NULL,
@@ -28,7 +30,7 @@ VALUES (
 SELECT * FROM banking_banker;
 
 ALTER TABLE banking_accounts
-ADD COLUMN banker_id VARCHAR(20),
+#ADD COLUMN banker_id VARCHAR(20),
 ADD CONSTRAINT fk_banker
 FOREIGN KEY (banker_id)
 REFERENCES banking_banker(employment_id)
