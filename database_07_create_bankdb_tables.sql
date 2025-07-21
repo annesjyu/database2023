@@ -24,3 +24,21 @@ CREATE TABLE transactions (
 
 DESC accounts;
 DESC transactions;
+
+-- Insert sample accounts
+INSERT INTO accounts (id, name, balance) VALUES
+  (1, 'Alice', 1000.00),
+  (2, 'Bob', 1500.50),
+  (3, 'Charlie', 500.75);
+
+-- Insert sample transactions
+INSERT INTO transactions (account_id, amount) VALUES
+  (1, -100.00),
+  (1, 200.00),
+  (2, -50.50),
+  (3, 300.00),
+  (2, -200.00);
+
+SELECT accounts.id, accounts.`name`, accounts.balance, 
+	transactions.amount, transactions.timestamp FROM accounts 
+INNER JOIN transactions ON accounts.id=transactions.account_id;
