@@ -1305,8 +1305,8 @@ CREATE TABLE IF NOT EXISTS `stocks` (
 -- Dumping data for table stock_trading.stocks: ~2 rows (approximately)
 DELETE FROM `stocks`;
 INSERT INTO `stocks` (`stock_id`, `symbol`, `company_name`, `industry`, `exchange`) VALUES
-	(1, 'GOOGL', 'Alphabet Inc.', 'Technology', 'NASDAQ'),
-	(2, 'AAPL', 'Apple Inc.', 'Technology', 'NASDAQ'),
+	(1, 'AAPL', 'Apple Inc.', 'Technology', 'NASDAQ'),
+	(2, 'GOOGL', 'Alphabet Inc.', 'Technology', 'NASDAQ'),
 	(3, 'MSFT', 'Microsoft Corp', 'Technology', 'NASDAQ');
 
 -- Dumping structure for table stock_trading.trading_transactions
