@@ -86,8 +86,10 @@ CREATE VIEW account_loan_jt AS
    FROM ACCOUNT
    INNER JOIN loan ON account.account_id = loan.account_id);
 
+-- rename
 
+ALTER TABLE district CHANGE COLUMN A1 district_id INT;
+SELECT district_id FROM district LIMIT 10;
 
-
-
-
+ALTER TABLE district CHANGE COLUMN A2 district_name VARCHAR(100);
+SELECT district_name FROM district LIMIT 10;
