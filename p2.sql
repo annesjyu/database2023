@@ -1,13 +1,12 @@
 C:\Program Files\MariaDB 12.0\bin>mysql --user=root --password=root < C:\Users\admin\Downloads\mysql_dump.sql
 
-loan, trans, account,
- 
-constraints:
--- Step 1: Drop the foreign key (must know the exact name)
+-- loan, trans, account, 
+-- constraints:
+-- Step 1
 ALTER TABLE loan 
 DROP FOREIGN KEY fk_loan_account;
 
--- Step 2: Add the new constraint
+-- Step 2
 ALTER TABLE loan
 ADD CONSTRAINT fk_loan_account
 FOREIGN KEY (account_id) REFERENCES account(account_id);
@@ -19,7 +18,7 @@ ADD CONSTRAINT PRIMARY KEY (account_id);
 SHOW CREATE TABLE trans;
 
 ALTER TABLE trans
-ADD CONSTRAINT PRIMARY KEY (trans_id, account_id);
+ADD CONSTRAINT PRIMARY KEY (trans_id);
 
 ALTER TABLE trans
 ADD CONSTRAINT fk_trans_account
@@ -52,7 +51,7 @@ SELECT trans_id, account_id, COUNT(*) FROM trans GROUP BY 1 HAVING COUNT(*) > 2;
 
 SELECT account_id, COUNT(*) FROM account GROUP BY account_id HAVING COUNT(*) > 2;
 
--- transform
+-- transformation
 
 SELECT DISTINCT `type` FROM trans;
 
@@ -70,7 +69,7 @@ END);
 
 SELECT DISTINCT `type`, formatted_type FROM trans;
 
--- create new joined view or table
+-- create a new joined view or table
 
 CREATE VIEW account_loan_jt AS
   (SELECT account.account_id,
@@ -86,10 +85,11 @@ CREATE VIEW account_loan_jt AS
    FROM ACCOUNT
    INNER JOIN loan ON account.account_id = loan.account_id);
 
--- rename
+-- Rename columns
 
 ALTER TABLE district CHANGE COLUMN A1 district_id INT;
 SELECT district_id FROM district LIMIT 10;
 
 ALTER TABLE district CHANGE COLUMN A2 district_name VARCHAR(100);
 SELECT district_name FROM district LIMIT 10;
+
