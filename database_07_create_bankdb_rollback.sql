@@ -1,12 +1,11 @@
 -- Use the correct database
 USE bank_db;
 
--- The same balances as before transaction.
 SELECT * FROM accounts ORDER BY accounts.id;
 
------------------------------------------------
+-- ---------------------------------------------
 -- Start a transaction
------------------------------------------------
+-- ---------------------------------------------
 START TRANSACTION;
 
 -- Deduct from sender
@@ -25,20 +24,15 @@ INSERT INTO transactions (account_id, amount) VALUES
     (2,  20000.00);
 
 -- Check sender balance
-SET @sender_balance := (SELECT balance FROM accounts WHERE id = 1);
+SELECT balance FROM accounts WHERE id = 1;
 
--- Commit or rollback depending on the balance
-IF @sender_balance >= 0 THEN
-    COMMIT;
-    SELECT 'Transaction successful.' AS Message;
-ELSE
-    ROLLBACK;
-    SELECT 'Transaction failed: Insufficient funds.' AS Message;
-END IF;
+-- The balance is negative, should rollback
 
------------------------------------------------
+ROLLBACK;
+
+-- ---------------------------------------------
 -- END of Transaction
------------------------------------------------
+-- ---------------------------------------------
 
 -- The same balances as before the transaction.
 SELECT * FROM accounts ORDER BY accounts.id;
