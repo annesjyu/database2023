@@ -13,7 +13,7 @@ FOREIGN KEY (account_id) REFERENCES account(account_id);
 
 ALTER TABLE loan
 DROP PRIMARY KEY,
-ADD CONSTRAINT PRIMARY KEY (account_id);
+ADD CONSTRAINT PRIMARY KEY (loan_id);
 
 SHOW CREATE TABLE trans;
 
@@ -159,6 +159,7 @@ FROM client;
 
 -- Check age
 SELECT client_id, age FROM client WHERE age <= 10 OR age >= 90;
+
 
 
 
